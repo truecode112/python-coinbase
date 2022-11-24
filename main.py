@@ -13,11 +13,11 @@ def get_all_accounts():
     print(message)
     signature = hmac.new(API_SECRET.encode('utf-8'), message.encode('utf-8'), digestmod=hashlib.sha256).digest()
     print(signature.hex(), timestamp)
-    url = "http://coinbase.com/api/v3/brokerage/accounts"
+    url = "https://coinbase.com/api/v3/brokerage/accounts"
     headers = {
         "accept": "application/json",
         "CB-ACCESS-KEY": ACCESS_KEY,
-        "CB-ACCESS-SIGN": signature,
+        "CB-ACCESS-SIGN": signature.hex(),
         "CB-ACCESS-TIMESTAMP": timestamp
     }
 
